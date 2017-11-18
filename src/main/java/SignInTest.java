@@ -9,13 +9,16 @@ public class SignInTest {
 
     WebDriver driver = new ChromeDriver();
 
+    @BeforeSuite
+    public void runBeforeSuit()
+    {
+        LibraryFunctions.setDriverPath();
+    }
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
-        setDriverPath();
-
         driver.get("https://www.cleartrip.com/");
-        waitFor(2000);
+        LibraryFunctions.waitFor(2000);
 
         driver.findElement(By.linkText("Your trips")).click();
         driver.findElement(By.id("SignIn")).click();
@@ -27,25 +30,7 @@ public class SignInTest {
         driver.quit();
     }
 
-    private void waitFor(int durationInMilliSeconds) {
-        try {
-            Thread.sleep(durationInMilliSeconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
-
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
-    }
+    
 
 
 }
