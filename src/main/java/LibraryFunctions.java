@@ -7,6 +7,16 @@ import org.testng.annotations.Test;
 
 public class LibraryFuntions {
 
+    //driver instance
+    public static WebDriver driver;
+    
+    //launch browser with given url
+    public static void LaunchApp(string url)
+    {
+         driver = new ChromeDriver();
+         driver.get(url);
+    }
+    
     public static void waitFor(int durationInMilliSeconds) {
         try {
             Thread.sleep(durationInMilliSeconds);
