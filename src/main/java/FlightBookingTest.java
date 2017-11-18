@@ -12,6 +12,9 @@ import java.util.List;
 
 public class FlightBookingTest {
 
+    string fromTagId = "FromTag";
+    string toTagId = "toTag";
+    
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
         
@@ -19,8 +22,8 @@ public class FlightBookingTest {
         LibraryFunctions.waitFor(2000);
         LibraryFunctions.driver.findElement(By.id("OneWay")).click();
 
-        LibraryFunctions.driver.findElement(By.id("FromTag")).clear();
-        LibraryFunctions.driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
+        LibraryFunctions.driver.findElement(By.id(fromTagId)).clear();
+        LibraryFunctions.driver.findElement(By.id(fromTagId)).sendKeys("Bangalore");
 
         //wait for the auto complete options to appear for the origin
 
@@ -28,8 +31,8 @@ public class FlightBookingTest {
         List<WebElement> originOptions = LibraryFunctions.driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
 
-        LibraryFunctions.driver.findElement(By.id("toTag")).clear();
-        LibraryFunctions.driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        LibraryFunctions.driver.findElement(By.id(toTagId)).clear();
+        LibraryFunctions.driver.findElement(By.id(toTagId)).sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
 
